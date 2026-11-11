@@ -19,7 +19,7 @@ stream=np.zeros((H,W),np.uint8)
 pts=np.array([[903,0],[957,0],[878,325],[826,325]],np.int32); cv2.fillPoly(stream,[pts],255)
 stream=cv2.GaussianBlur(stream,(0,0),6).astype(np.float32)/255
 def g(cx,cy,s): return np.exp(-(((xx-cx)**2+(yy-cy)**2)/(2*s*s)))
-N=111; fps=30
+N=165; fps=30
 for i in range(N):
     t=i/fps
     dx=np.zeros((H,W),np.float32); dy=np.zeros((H,W),np.float32)
