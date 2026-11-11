@@ -1,0 +1,407 @@
+<title>هوية قرمشة</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Readex+Pro:wght@300;400;600;700&display=swap">
+<style>
+/* Layout: right-to-left brand book; night bands for the mark, honey-sand pages for the system, one crack line as the recurring divider */
+:root{
+  --night:#140B05;      /* ليل التحميص */
+  --roast:#2B170A;      /* بُني محمّص — الحبر */
+  --honey:#E8A21A;      /* عسل السدر — اللون الأم */
+  --honey-deep:#B6700B;
+  --oat:#E6CF9F;        /* شوفان محمّص */
+  --paper:#F5E9D1;      /* ورق الكيس */
+  --teal:#16756E;       /* زجاج القمرية */
+  --pom:#B8322A;        /* رمّان */
+  --indigo:#273D8E;     /* نيلي */
+  --line:rgba(43,23,10,.16);
+  --display:"Lalezar","Readex Pro",system-ui,sans-serif;
+  --body:"Readex Pro",system-ui,"Segoe UI",Tahoma,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--roast);font-family:var(--body);font-size:16px;line-height:1.75;direction:rtl}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:72px}
+.band{background:var(--night);color:var(--paper)}
+.band-honey{background:var(--honey);color:var(--night)}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(34px,5vw,56px)}
+h3{font-size:26px}
+p{margin:0;max-width:62ch}
+.eyebrow{font-size:13px;letter-spacing:.08em;font-weight:600;color:var(--honey-deep);display:flex;gap:10px;align-items:center}
+.band .eyebrow{color:var(--honey)}
+.eyebrow .lat{font-family:var(--body);letter-spacing:.2em;font-size:11px;opacity:.7}
+.head{display:grid;gap:14px;margin-bottom:40px}
+.lede{font-size:18px;opacity:.85}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.tile{border-radius:18px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.tile.dark{background:var(--night);color:var(--paper)}
+.tile.sand{background:var(--oat)}
+.tile.honey{background:var(--honey);color:var(--night)}
+.tile.line{border:1.5px solid var(--line)}
+.cap{font-size:13px;opacity:.75}
+svg{display:block;max-width:100%;height:auto}
+.crack-div{height:28px;margin-block:8px}
+
+/* hero */
+.hero{background:var(--night);color:var(--paper);padding-block:56px 64px;overflow:hidden;position:relative}
+.hero .wrap{display:grid;gap:22px;justify-items:center;text-align:center;position:relative}
+.hero .mark{width:min(640px,100%)}
+.hero .tag{font-family:var(--display);font-size:clamp(28px,4.4vw,46px);color:var(--honey)}
+.hero .sub{opacity:.7;font-size:15px;letter-spacing:.02em}
+.hero .lat{font-size:12px;letter-spacing:.42em;opacity:.55;direction:ltr}
+.wm .p{transition:transform 1s cubic-bezier(.2,1.4,.3,1)}
+.wm .crumb{transition:opacity .4s .35s,transform 1s cubic-bezier(.2,1.2,.3,1)}
+.wm:not(.split) .p{transform:none!important}
+.wm:not(.split) .crumb{opacity:0;transform:translate(300px,110px) scale(.2)}
+@media (prefers-reduced-motion:reduce){.wm .p,.wm .crumb{transition:none}}
+
+/* lessons table */
+.lessons{display:grid;gap:0;border-top:1.5px solid var(--line)}
+.lesson{display:grid;grid-template-columns:150px 1fr 1fr;gap:24px;padding-block:20px;border-bottom:1.5px solid var(--line);align-items:start}
+.lesson b{font-family:var(--display);font-weight:400;font-size:22px}
+.lesson .from{font-size:12px;opacity:.6;letter-spacing:.1em;direction:ltr;text-align:right}
+.lesson .ours{color:var(--honey-deep);font-weight:600}
+@media (max-width:720px){.lesson{grid-template-columns:1fr;gap:6px}}
+.nots{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.nots span{border:1.5px dashed var(--line);border-radius:999px;padding:6px 14px;font-size:14px}
+
+/* color */
+.sw{border-radius:18px;overflow:hidden;border:1.5px solid var(--line);display:grid}
+.sw .chip{height:120px}
+.sw .meta{padding:14px 16px;display:grid;gap:2px;background:var(--paper)}
+.sw .meta b{font-weight:700}
+.sw .meta code{font-family:var(--body);font-size:13px;direction:ltr;text-align:right;opacity:.75;font-variant-numeric:tabular-nums}
+.ratio{display:flex;height:46px;border-radius:12px;overflow:hidden;margin-top:24px}
+.ratio div{display:grid;place-items:center;font-size:12px;font-weight:600}
+
+/* type */
+.spec{display:grid;gap:8px}
+.spec .big{font-family:var(--display);font-size:clamp(52px,8vw,96px);line-height:1}
+.spec .body{font-size:22px;font-weight:300}
+.scale{display:grid;gap:10px;margin-top:10px}
+.scale div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.scale span{font-size:12px;opacity:.6;direction:ltr;font-variant-numeric:tabular-nums}
+
+/* misuse */
+.bad{position:relative}
+.bad::after{content:"";position:absolute;inset:14px;background:linear-gradient(to top left,transparent calc(50% - 2px),var(--pom) calc(50% - 2px),var(--pom) calc(50% + 2px),transparent calc(50% + 2px));opacity:.85;pointer-events:none;border-radius:12px}
+
+/* voice */
+.voice{display:grid;gap:14px}
+.say{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.say i{font-style:normal;font-family:var(--display);font-size:20px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.say.yes i{background:var(--teal);color:var(--paper)}
+.say.no i{background:var(--pom);color:var(--paper)}
+.say.no p{text-decoration:line-through;opacity:.65}
+.quote{font-family:var(--display);font-size:clamp(26px,3.6vw,38px);line-height:1.3}
+footer{padding-block:40px;font-size:13px;opacity:.7}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--honey);outline-offset:3px}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="granola" width="64" height="64" patternUnits="userSpaceOnUse">
+      <rect width="64" height="64" fill="#B9802F"/>
+      <g id="gr-dots"></g>
+    </pattern>
+    <pattern id="qamariya" width="72" height="96" patternUnits="userSpaceOnUse">
+      <rect width="72" height="96" fill="#16756E"/>
+      <path d="M8 92V44a28 28 0 0 1 56 0v48z" fill="none" stroke="#F5E9D1" stroke-width="2.5" opacity=".9"/>
+      <path d="M36 44L12 44A24 24 0 0 1 19 27Z" fill="#E8A21A"/>
+      <path d="M36 44L19 27A24 24 0 0 1 36 20Z" fill="#B8322A"/>
+      <path d="M36 44L36 20A24 24 0 0 1 53 27Z" fill="#273D8E"/>
+      <path d="M36 44L53 27A24 24 0 0 1 60 44Z" fill="#E8A21A"/>
+      <path d="M12 44h48" stroke="#F5E9D1" stroke-width="2"/>
+      <circle cx="36" cy="70" r="3" fill="#E8A21A"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="lat">QARMASHA · YEMENI GRANOLA</div>
+    <div class="mark" id="heroMark"></div>
+    <div class="tag">قرمشة تُسمع</div>
+    <p class="sub">دليل الهوية البصرية — جرانولا يمنية بعسل السدر، من تعز</p>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">الفكرة <span class="lat">THE IDEA</span></div>
+      <h2>كل شيء في قرمشة يبدأ من لحظة الكسر</h2>
+      <p class="lede">الجرانولا تُعرف بصوتها قبل طعمها. لذلك توقيع العلامة هو «الكسرة»: خط متعرّج يشق الاسم نصفين، كأن الحبة انكسرت للتو. والعنصر الثاني «القمرية»، نافذة الزجاج الملوّن في بيوت اليمن، نستعملها نافذةً في الكيس تكشف الحبات، ونأخذ من زجاجها ألوان النكهات.</p>
+    </div>
+    <div class="grid g2">
+      <div class="tile dark">
+        <div id="crackDemo"></div>
+        <h3>الكسرة</h3>
+        <p class="cap">خط من أربع قطع بزوايا غير متساوية. يظهر في الشعار، وفي فواصل الصفحات، وكشريط الفتح في الكيس. لا يُرسم مستقيمًا أبدًا.</p>
+      </div>
+      <div class="tile" style="background:var(--teal);color:var(--paper);padding:0;overflow:hidden">
+        <svg viewBox="0 0 420 240" role="img" aria-label="نمط القمرية"><rect width="420" height="240" fill="url(#qamariya)"/></svg>
+        <div style="padding:0 24px 24px;display:grid;gap:10px">
+          <h3>القمرية</h3>
+          <p class="cap" style="opacity:.85">قوس فوق مستطيل، ونصف دائرة مقسّمة إلى زجاج ملوّن. تتكرر نمطًا على الكيس من الداخل، وعلى الشرائط، وخلفيات السوشيال.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--oat)">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">ما تعلّمناه من الأقوى <span class="lat">LEARN, DON'T COPY</span></div>
+      <h2>أخذنا المبدأ، وتركنا الشكل</h2>
+      <p class="lede">درسنا أنجح علامات الحبوب والجرانولا عالميًا. لم ننسخ شكلًا ولا لونًا من أي منها، أخذنا ما يجعلها تنجح وترجمناه لقرمشة.</p>
+    </div>
+    <div class="lessons">
+      <div class="lesson"><div><b>صوت له ناس</b><div class="from">OATLY</div></div><p>علامة تتكلم بلهجة جريئة وطريفة بدل لغة الإعلانات الرسمية.</p><p class="ours">قرمشة تتكلم تعزّي: دافئة وقريبة، «والله ما تشبع منها».</p></div>
+      <div class="lesson"><div><b>شوف اللي بتاكله</b><div class="from">KIND</div></div><p>الشفافية: نافذة تُظهر المكونات الحقيقية.</p><p class="ours">نافذة الكيس على شكل قمرية تكشف الحبات والعسل.</p></div>
+      <div class="lesson"><div><b>لون لكل نكهة</b><div class="from">DORSET CEREALS</div></div><p>نظام ألوان يجعل كل نكهة تُعرف من بعيد على الرف.</p><p class="ours">ألوان زجاج القمرية تفرّق النكهات: عسل، رمّان، نيلي، فيروزي.</p></div>
+      <div class="lesson"><div><b>قصة المكان</b><div class="from">NATURE VALLEY</div></div><p>ربط المنتج بطبيعة ومكان حقيقي.</p><p class="ours">تعز وجبل صبر وعسل السدر اليمني، بدون صور مناظر مكررة.</p></div>
+    </div>
+    <div class="nots" aria-label="ما نتجنبه">
+      <span>لا سنبلة قمح</span><span>لا ورقة خضراء «صحي»</span><span>لا شمس شروق</span><span>لا خط يدوي مستعار</span><span>لا أبيض وأخضر الصيدليات</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">الشعار <span class="lat">LOGO SYSTEM</span></div>
+      <h2>اسم مكسور، وعلامة قمرية</h2>
+      <p class="lede">الشعار الأساسي هو الاسم بخط عريض ممتلئ، تشقه الكسرة بين «قر» و«مشة» وتتناثر منه فتاتتان. والأيقونة قمرية فيها حرف القاف، للأحجام الصغيرة وصورة الحساب.</p>
+    </div>
+    <div class="grid g2">
+      <div class="tile" style="background:#1E1209">
+        <div id="logoPrimary"></div>
+        <div class="cap">الشعار الأساسي — عسل على ليل</div>
+      </div>
+      <div class="tile honey">
+        <div id="logoOnHoney"></div>
+        <div class="cap">على العسل — بالبني المحمّص</div>
+      </div>
+    </div>
+    <div class="grid g4" style="margin-top:20px">
+      <div class="tile" style="background:#1E1209;justify-items:center"><div id="icon1" style="width:140px"></div><div class="cap">الأيقونة</div></div>
+      <div class="tile sand" style="justify-items:center;color:var(--roast)"><div id="icon2" style="width:140px"></div><div class="cap">الأيقونة على الشوفان</div></div>
+      <div class="tile" style="background:var(--paper);color:var(--roast);justify-items:center"><div id="stacked" style="width:200px"></div><div class="cap">مع الاسم اللاتيني</div></div>
+      <div class="tile" style="background:var(--teal);justify-items:center"><div id="icon3" style="width:96px"></div><div class="cap">صورة الحساب</div></div>
+    </div>
+    <div class="grid g3" style="margin-top:28px">
+      <div class="tile line" style="border-color:rgba(245,233,209,.18)"><h3>مسافة الأمان</h3><p class="cap">حول الشعار مسافة فارغة تساوي ارتفاع نقاط الشين الثلاث. لا يدخلها نص ولا صورة.</p></div>
+      <div class="tile line" style="border-color:rgba(245,233,209,.18)"><h3>أصغر حجم</h3><p class="cap">الشعار الأساسي: عرض ٨٠ بكسل أو ٢٠ مم. تحت ذلك تُستعمل الأيقونة (٢٤ بكسل كحد أدنى).</p></div>
+      <div class="tile line" style="border-color:rgba(245,233,209,.18)"><h3>الكسرة ثابتة</h3><p class="cap">الكسرة جزء من الشعار. لا تُغلق، ولا تُحرّك لحرف آخر، ولا تُضاف كسرات جديدة.</p></div>
+    </div>
+    <h3 style="margin-top:44px;margin-bottom:16px">ممنوع</h3>
+    <div class="grid g4">
+      <div class="tile bad" style="background:#1E1209"><div class="misuse" data-kind="closed"></div><div class="cap">إغلاق الكسرة</div></div>
+      <div class="tile bad" style="background:#1E1209"><div class="misuse" data-kind="stretch"></div><div class="cap">مطّ الشعار</div></div>
+      <div class="tile bad" style="background:#1E1209"><div class="misuse" data-kind="color"></div><div class="cap">لون خارج النظام</div></div>
+      <div class="tile bad" style="background:#1E1209"><div class="misuse" data-kind="outline"></div><div class="cap">حدود ومؤثرات</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">الألوان <span class="lat">COLOUR</span></div>
+      <h2>من المطبخ ومن نافذة البيت</h2>
+      <p class="lede">ثلاثة ألوان من المكونات نفسها تحمل العلامة، وثلاثة من زجاج القمرية تُستعمل للنكهات واللمسات فقط.</p>
+    </div>
+    <div class="grid g3" id="swatches"></div>
+    <div class="ratio" aria-label="نسب استعمال الألوان">
+      <div style="flex:38;background:var(--night);color:var(--paper)">ليل ٣٨٪</div>
+      <div style="flex:30;background:var(--honey)">عسل ٣٠٪</div>
+      <div style="flex:20;background:var(--oat)">شوفان ٢٠٪</div>
+      <div style="flex:4;background:var(--teal)"></div>
+      <div style="flex:4;background:var(--pom)"></div>
+      <div style="flex:4;background:var(--indigo)"></div>
+    </div>
+    <p class="cap" style="margin-top:10px">ألوان الزجاج مجتمعة لا تتجاوز ١٢٪ من أي تصميم، ما عدا لون النكهة على كيسها.</p>
+  </div>
+</section>
+
+<section style="background:var(--oat)">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">الخطوط <span class="lat">TYPE</span></div>
+      <h2>خط يُقرمش، وخط يشرح</h2>
+    </div>
+    <div class="grid g2">
+      <div class="tile" style="background:var(--paper)">
+        <div class="spec"><div class="cap">العناوين والشعار — Lalezar</div><div class="big">قرمشة تُسمع</div><p class="cap">عريض ممتلئ بزوايا ناعمة. للعناوين القصيرة فقط، ولا يُستعمل لأكثر من سطرين.</p></div>
+      </div>
+      <div class="tile" style="background:var(--paper)">
+        <div class="spec"><div class="cap">النصوص — Readex Pro</div><div class="body">شوفان محمّص على مهل، ولوز، وعسل سدر. كل حبة متماسكة وتنكسر بصوت.</div><p class="cap">واضح بالعربي واللاتيني معًا. للمكونات، والوصف، والتغليف، والموقع.</p></div>
+        <div class="scale">
+          <div><b style="font-family:var(--display);font-size:40px;font-weight:400">عنوان كبير</b><span>Lalezar 40</span></div>
+          <div><b style="font-family:var(--display);font-size:26px;font-weight:400">عنوان قسم</b><span>Lalezar 26</span></div>
+          <div><b style="font-size:18px;font-weight:600">عنوان فرعي</b><span>Readex 600 / 18</span></div>
+          <div><span style="font-size:16px;opacity:1;direction:rtl">نص عادي للقراءة</span><span>Readex 400 / 16</span></div>
+          <div><span style="font-size:13px;opacity:1;direction:rtl">ملاحظات ومكونات</span><span>Readex 400 / 13</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">التغليف <span class="lat">PACKAGING</span></div>
+      <h2>كيس بنافذة قمرية، ولون لكل نكهة</h2>
+      <p class="lede">النافذة تُظهر الحبات الحقيقية، ونصف الدائرة فوقها زجاج ملوّن. شريط الفتح يتبع الكسرة. النكهات أدناه مقترحة لبداية التشكيلة.</p>
+    </div>
+    <div class="grid g4" id="pouches"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">السوشيال <span class="lat">SOCIAL</span></div>
+      <h2>ثلاثة قوالب تكفي لشهر</h2>
+      <p class="lede">بوست الصوت على الليل، وبوست المنتج على العسل، وبوست اللهجة على نمط القمرية. صور المنتج دائمًا على خلفية سوداء مثل الإعلان.</p>
+    </div>
+    <div class="grid g3" id="posts"></div>
+  </div>
+</section>
+
+<section class="band-honey">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow" style="color:var(--night)">الصوت والنبرة <span class="lat">VOICE</span></div>
+      <h2>نتكلم مثل واحد من تعز يعزمك على الفطور</h2>
+    </div>
+    <div class="grid g2">
+      <div class="voice">
+        <div class="say yes"><i>✓</i><p class="quote">قرمشة تُسمع.</p></div>
+        <div class="say yes"><i>✓</i><p class="quote">اسمعها قبل ما تذوقها.</p></div>
+        <div class="say yes"><i>✓</i><p class="quote">والله ما تشبع منها.</p></div>
+        <div class="say yes"><i>✓</i><p class="quote">هيا قرمِش.</p></div>
+      </div>
+      <div class="voice">
+        <div class="say no"><i>✕</i><p>منتج صحي مثالي لنمط حياة متوازن.</p></div>
+        <div class="say no"><i>✕</i><p>استمتع بتجربة فريدة من نوعها.</p></div>
+        <div class="say no"><i>✕</i><p>الخيار الأفضل لعائلتك.</p></div>
+        <p class="cap" style="margin-top:8px">قاعدة: جملة قصيرة، فعل واضح، كلمة من البيت. لا ادعاءات صحية ولا أرقام غذائية إلا بعد التحقق منها.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">قرمشة · دليل الهوية الإصدار الأول · النكهات والعبارات مقترحات تُراجَع قبل الطباعة</div>
+</footer>
+
+<script>
+(function(){
+  // granola texture dots
+  var g=document.getElementById('gr-dots'), s='', seed=7;
+  function r(){seed=(seed*9301+49297)%233280;return seed/233280}
+  var cols=['#7A4A17','#D9A34A','#5C3510','#E8C27A','#A86A22','#F0D8A0'];
+  for(var i=0;i<46;i++){s+='<ellipse cx="'+(r()*64).toFixed(1)+'" cy="'+(r()*64).toFixed(1)+'" rx="'+(2+r()*5).toFixed(1)+'" ry="'+(1.5+r()*3.5).toFixed(1)+'" transform="rotate('+(r()*180|0)+' 32 32)" fill="'+cols[i%cols.length]+'"/>'}
+  g.innerHTML=s;
+
+  var CR='318,0 292,70 322,112 288,160 310,220';
+  function wordmark(fill, opts){
+    opts=opts||{}; var id='c'+Math.random().toString(36).slice(2,7);
+    var closed=opts.closed, lat=opts.latin;
+    var vb=lat?'0 0 600 280':'0 0 600 220';
+    var txt='<text x="300" y="168" text-anchor="middle" font-family="Lalezar, Readex Pro, sans-serif" font-size="176" fill="'+fill+'">قرمشة</text>';
+    var L='0,0 '+CR+' 0,220', R='600,0 '+CR+' 600,220';
+    var out='<svg class="wm'+(closed?'':' split')+'" viewBox="'+vb+'" role="img" aria-label="شعار قرمشة"><defs><clipPath id="'+id+'L"><polygon points="'+L+'"/></clipPath><clipPath id="'+id+'R"><polygon points="'+R+'"/></clipPath></defs>';
+    out+='<g class="p" style="transform:translate(-12px,7px) rotate(-2.4deg);transform-origin:300px 110px" clip-path="url(#'+id+'L)">'+txt+'</g>';
+    out+='<g class="p" style="transform:translate(15px,-11px) rotate(3.4deg);transform-origin:300px 110px" clip-path="url(#'+id+'R)">'+txt+'</g>';
+    if(!closed){
+      out+='<polygon class="crumb" points="296,40 306,36 309,46 299,49" fill="'+fill+'" style="transform:translate(2px,-14px) rotate(20deg);transform-origin:302px 42px"/>';
+      out+='<polygon class="crumb" points="300,128 307,126 309,133 302,136" fill="'+fill+'" style="transform:translate(-3px,16px)"/>';
+    }
+    if(lat){out+='<text x="300" y="262" text-anchor="middle" font-family="Readex Pro, sans-serif" font-weight="600" font-size="30" letter-spacing="18" fill="'+fill+'">QARMASHA</text>'}
+    return out+'</svg>';
+  }
+  function icon(bg,fg){
+    return '<svg viewBox="0 0 120 150" role="img" aria-label="أيقونة قرمشة">'+
+      '<path d="M8 146V62a52 52 0 0 1 104 0v84z" fill="'+bg+'"/>'+
+      '<path d="M60 62L14 62A46 46 0 0 1 27 29Z" fill="#E8A21A"/><path d="M60 62L27 29A46 46 0 0 1 60 16Z" fill="#B8322A"/>'+
+      '<path d="M60 62L60 16A46 46 0 0 1 93 29Z" fill="#273D8E"/><path d="M60 62L93 29A46 46 0 0 1 106 62Z" fill="#16756E"/>'+
+      '<path d="M14 62h92" stroke="'+fg+'" stroke-width="3"/>'+
+      '<path d="M8 146V62a52 52 0 0 1 104 0v84z" fill="none" stroke="'+fg+'" stroke-width="3"/>'+
+      '<text x="60" y="136" text-anchor="middle" font-family="Lalezar, sans-serif" font-size="74" fill="'+fg+'">ق</text>'+
+      '<polyline points="66,70 58,88 67,100 57,118" fill="none" stroke="'+bg+'" stroke-width="4" stroke-linejoin="round"/>'+
+      '</svg>';
+  }
+  function set(id,html){var e=document.getElementById(id); if(e) e.innerHTML=html}
+  set('heroMark',wordmark('#E8A21A',{closed:true}));
+  set('logoPrimary',wordmark('#E8A21A'));
+  set('logoOnHoney',wordmark('#2B170A'));
+  set('stacked',wordmark('#2B170A',{latin:true}));
+  set('icon1',icon('#2B170A','#F5E9D1'));
+  set('icon2',icon('#2B170A','#E8A21A'));
+  set('icon3',icon('#140B05','#E8A21A'));
+  set('crackDemo','<svg viewBox="0 0 400 120" aria-hidden="true"><polyline points="0,64 120,64 150,30 196,92 236,44 262,64 400,64" fill="none" stroke="#E8A21A" stroke-width="5" stroke-linejoin="miter"/></svg>');
+  document.querySelectorAll('.misuse').forEach(function(m){
+    var k=m.dataset.kind;
+    if(k==='closed') m.innerHTML=wordmark('#E8A21A',{closed:true});
+    if(k==='stretch') m.innerHTML='<div style="transform:scaleX(1.35) scaleY(.75)">'+wordmark('#E8A21A')+'</div>';
+    if(k==='color') m.innerHTML=wordmark('#5BC236');
+    if(k==='outline') m.innerHTML='<div style="filter:drop-shadow(0 0 6px #fff) drop-shadow(3px 3px 0 #B8322A)">'+wordmark('#E8A21A')+'</div>';
+  });
+  setTimeout(function(){var h=document.querySelector('#heroMark .wm'); if(h) h.classList.add('split')}, matchMedia('(prefers-reduced-motion: reduce)').matches?0:500);
+
+  var sw=[
+    ['ليل التحميص','#140B05','الخلفية الأساسية للإعلانات وصور المنتج.','#F5E9D1'],
+    ['عسل السدر','#E8A21A','اللون الأم: الشعار، العناوين، نكهة العسل.','#140B05'],
+    ['شوفان محمّص','#E6CF9F','مساحات التنفس، الورق، خلفيات المعلومات.','#2B170A'],
+    ['فيروزي القمرية','#16756E','نكهة البن اليمني، ونمط القمرية.','#F5E9D1'],
+    ['رمّان','#B8322A','نكهة التمر والهيل، والتنبيهات.','#F5E9D1'],
+    ['نيلي','#273D8E','نكهة اللوز والسمسم.','#F5E9D1']];
+  set('swatches',sw.map(function(c){return '<div class="sw"><div class="chip" style="background:'+c[1]+'"></div><div class="meta"><b>'+c[0]+'</b><code>'+c[1]+'</code><span class="cap">'+c[2]+'</span></div></div>'}).join(''));
+
+  function pouch(col,ink,name,note){
+    return '<div class="tile" style="background:#1E1209;justify-items:center;text-align:center"><svg viewBox="0 0 220 320" role="img" aria-label="كيس '+name+'">'+
+      '<path d="M20 34Q20 18 36 18H184Q200 18 200 34V290Q200 306 184 306H36Q20 306 20 290Z" fill="'+col+'"/>'+
+      '<path d="M20 44H200" stroke="'+ink+'" stroke-opacity=".35" stroke-width="2" stroke-dasharray="4 4"/>'+
+      '<polyline points="20,58 92,58 100,50 110,66 118,52 124,58 200,58" fill="none" stroke="'+ink+'" stroke-opacity=".55" stroke-width="2"/>'+
+      '<text x="110" y="108" text-anchor="middle" font-family="Lalezar, sans-serif" font-size="46" fill="'+ink+'">قرمشة</text>'+
+      '<path d="M58 250V168a52 52 0 0 1 104 0v82z" fill="url(#granola)"/>'+
+      '<path d="M110 168L62 168A48 48 0 0 1 76 134Z" fill="#E8A21A" fill-opacity=".85"/><path d="M110 168L76 134A48 48 0 0 1 110 120Z" fill="#B8322A" fill-opacity=".85"/>'+
+      '<path d="M110 168L110 120A48 48 0 0 1 144 134Z" fill="#273D8E" fill-opacity=".85"/><path d="M110 168L144 134A48 48 0 0 1 158 168Z" fill="#16756E" fill-opacity=".85"/>'+
+      '<path d="M58 250V168a52 52 0 0 1 104 0v82z" fill="none" stroke="'+ink+'" stroke-width="3"/><path d="M62 168h96" stroke="'+ink+'" stroke-width="2.5"/>'+
+      '<text x="110" y="276" text-anchor="middle" font-family="Readex Pro, sans-serif" font-weight="700" font-size="15" fill="'+ink+'">'+name+'</text>'+
+      '<text x="110" y="295" text-anchor="middle" font-family="Readex Pro, sans-serif" font-size="10" fill="'+ink+'" fill-opacity=".75">٣٥٠ غ · جرانولا يمنية</text>'+
+      '</svg><b style="font-weight:600">'+name+'</b><span class="cap">'+note+'</span></div>';
+  }
+  set('pouches',[
+    pouch('#E8A21A','#140B05','عسل سدر','الأساسية. عسل ولوز.'),
+    pouch('#B8322A','#F5E9D1','تمر وهيل','حلاوة التمر ورائحة الهيل.'),
+    pouch('#16756E','#F5E9D1','بُن يمني','للصباح، بنكهة قهوة المخا.'),
+    pouch('#273D8E','#F5E9D1','لوز وسمسم','الأكثر قرمشة.')].join(''));
+
+  function post(bg,content){return '<div style="aspect-ratio:1;border-radius:18px;overflow:hidden;position:relative;max-width:100%">'+bg+content+'</div>'}
+  set('posts',[
+    post('<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#3A2210,#140B05 70%)"></div>',
+      '<div style="position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:6px;padding:10%"><div style="width:86%">'+wordmark('#E8A21A')+'</div><div style="font-family:var(--display);color:#F5E9D1;font-size:clamp(20px,3vw,30px)">اسمعها قبل ما تذوقها</div></div>'),
+    post('<div style="position:absolute;inset:0;background:#E8A21A"></div>',
+      '<div style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8%;gap:4%"><div style="display:grid;gap:8px;color:#140B05"><div style="font-family:var(--display);font-size:clamp(26px,3.6vw,40px);line-height:1.15">عسل سدر<br>ولوز</div><div style="font-size:13px;font-weight:600">قرمشة · ٣٥٠ غ</div></div><div>'+pouchSvgOnly()+'</div></div>'),
+    post('<svg viewBox="0 0 300 300" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="300" fill="url(#qamariya)"/></svg><div style="position:absolute;inset:0;background:linear-gradient(transparent 20%,rgba(20,11,5,.85) 75%)"></div>',
+      '<div style="position:absolute;inset:auto 8% 9% 8%;color:#F5E9D1;display:grid;gap:6px"><div style="font-family:var(--display);font-size:clamp(30px,4.4vw,48px);line-height:1.1;color:#E8A21A">والله ما تشبع منها</div><div style="font-size:13px;opacity:.85">قرمشة · جرانولا يمنية من تعز</div></div>')
+  ].join(''));
+  function pouchSvgOnly(){var t=document.createElement('div');t.innerHTML=pouch('#140B05','#E8A21A','عسل سدر','');return t.querySelector('svg').outerHTML}
+  // re-render posts that depend on pouch helper (defined after first call)
+})();
+</script>
